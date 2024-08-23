@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477813641511713184}
   m_Layer: 0
-  m_Name: CameraTweenTargetPitch
+  m_Name: CameraTargetRoll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2327599300818307513}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6578121497455486294}
-  m_Father: {fileID: 8711038807509098764}
+  - {fileID: 8711038807509098764}
+  m_Father: {fileID: 6578121497455486294}
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &2548137340826429356
 GameObject:
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8711038807509098764}
   m_Layer: 0
-  m_Name: CameraTweenTargetYaw
+  m_Name: CameraTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,12 +140,11 @@ Transform:
   m_GameObject: {fileID: 3926183897030929129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.3, z: -1.28}
+  m_LocalPosition: {x: 0, y: 1.3518581, z: -2.2585125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 477813641511713184}
-  m_Father: {fileID: 843578509114817531}
+  m_Children: []
+  m_Father: {fileID: 477813641511713184}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4457105224526619303
 GameObject:
@@ -267,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843578509114817531}
   - component: {fileID: 4666094047012734976}
+  - component: {fileID: 332347164036126916}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -287,8 +287,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 739537255908901500}
   - {fileID: 7934121264518752667}
-  - {fileID: 8711038807509098764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4666094047012734976
@@ -305,9 +305,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAction: {fileID: -906869437658036102, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
   rotateAction: {fileID: 5034186921256949605, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
+  cameraPitch: {fileID: 739537255908901500}
   allowSideMovement: 1
   movementSpeed: 2
-  rotationSpeed: 2
+  rotationSpeed: 20
+  minimumCameraPitch: 20
+  maximumCameraPitch: 50
+--- !u!54 &332347164036126916
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470402003800959977}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &7288123630867086481
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 739537255908901500}
   m_Layer: 0
-  m_Name: CameraTweenTarget
+  m_Name: CameraTargetPitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -332,12 +362,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7288123630867086481}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6578121497455486294}
+  m_Children:
+  - {fileID: 6578121497455486294}
+  m_Father: {fileID: 843578509114817531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7670836620608727704
 GameObject:
@@ -515,7 +546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6578121497455486294}
   m_Layer: 0
-  m_Name: CameraTweenTargetRoll
+  m_Name: CameraTargetYaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,11 +560,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8789522808094233131}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 739537255908901500}
-  m_Father: {fileID: 477813641511713184}
+  - {fileID: 477813641511713184}
+  m_Father: {fileID: 739537255908901500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

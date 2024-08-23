@@ -6,10 +6,19 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField] private InputActionReference moveAction, rotateAction;
-    [SerializeField] private bool allowSideMovement = true;
+    [SerializeField] private Transform cameraPitch;
 
+    [SerializeField] private bool allowSideMovement = true;
     [SerializeField] private float movementSpeed = 5f;
     [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField] private float minimumCameraPitch = -80f, maximumCameraPitch = 80f;
+
+    private float currentCameraPitch = 0f;
+
+    void Start()
+    {
+        currentCameraPitch = cameraPitch.localEulerAngles.x;
+    }
 
     private void Update()
     {
@@ -24,5 +33,10 @@ public class PlayerControl : MonoBehaviour
 
         transform.Translate(movement * Time.deltaTime, Space.World);
         transform.Rotate(0, rotationVector.x * rotationSpeed * Time.deltaTime, 0);
+
+        currentCameraPitch -= rotationVector.y * rotationSpeed * Time.deltaTime;
+        currentCameraPitch = Mathf.Clamp(currentCameraPitch, minimumCameraPitch, maximumCameraPitch);
+
+        cameraPitch.localEulerAngles = new Vector3(currentCameraPitch, 0, 0);
     }
 }
