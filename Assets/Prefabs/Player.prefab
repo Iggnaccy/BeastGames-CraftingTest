@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 2312120160274885272}
   - component: {fileID: 6541086560270033953}
   - component: {fileID: 1699650992888928018}
-  - component: {fileID: 5169239167530642520}
   m_Layer: 0
   m_Name: Eyes
   m_TagString: Untagged
@@ -116,27 +115,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5169239167530642520
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2548137340826429356}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3926183897030929129
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +266,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 843578509114817531}
+  - component: {fileID: 4666094047012734976}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -312,6 +291,23 @@ Transform:
   - {fileID: 8711038807509098764}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4666094047012734976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470402003800959977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44ebbf2a6e1ca44da755dcc9448c284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: -906869437658036102, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
+  rotateAction: {fileID: 5034186921256949605, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
+  allowSideMovement: 1
+  movementSpeed: 2
+  rotationSpeed: 2
 --- !u!1 &7288123630867086481
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,7 +350,6 @@ GameObject:
   - component: {fileID: 4506818314630223120}
   - component: {fileID: 5671222540700892606}
   - component: {fileID: 1242892535446182351}
-  - component: {fileID: 7695685669601805949}
   m_Layer: 0
   m_Name: Foot (2)
   m_TagString: Untagged
@@ -427,27 +422,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7695685669601805949
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7670836620608727704}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8633888030263908334
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +433,6 @@ GameObject:
   - component: {fileID: 1402138193174742233}
   - component: {fileID: 8665115998141651478}
   - component: {fileID: 1634443794058849656}
-  - component: {fileID: 7740846347591757036}
   m_Layer: 0
   m_Name: Foot (1)
   m_TagString: Untagged
@@ -532,27 +505,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7740846347591757036
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8633888030263908334}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8789522808094233131
 GameObject:
   m_ObjectHideFlags: 0
