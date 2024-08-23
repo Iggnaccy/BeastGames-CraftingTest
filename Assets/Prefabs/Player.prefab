@@ -140,7 +140,7 @@ Transform:
   m_GameObject: {fileID: 3926183897030929129}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.3518581, z: -2.2585125}
+  m_LocalPosition: {x: 0, y: 1, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303,14 +303,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44ebbf2a6e1ca44da755dcc9448c284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveAction: {fileID: -906869437658036102, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
-  rotateAction: {fileID: 5034186921256949605, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
-  cameraPitch: {fileID: 739537255908901500}
-  allowSideMovement: 1
-  movementSpeed: 2
-  rotationSpeed: 20
-  minimumCameraPitch: 20
-  maximumCameraPitch: 50
+  _moveAction: {fileID: -906869437658036102, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
+  _rotateAction: {fileID: 5034186921256949605, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
+  _cameraPitch: {fileID: 739537255908901500}
+  _allowSideMovement: 1
+  _movementSpeed: 2
+  _rotationSpeed: 20
+  _minimumCameraPitch: 20
+  _maximumCameraPitch: 50
 --- !u!54 &332347164036126916
 Rigidbody:
   m_ObjectHideFlags: 0
