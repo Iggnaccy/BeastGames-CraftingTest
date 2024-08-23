@@ -5,22 +5,38 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private InputActionReference _moveAction, _rotateAction;
     [SerializeField] private Transform _cameraPitch;
 
+    [Header("Settings")]
     [SerializeField] private bool _allowSideMovement = true;
     [SerializeField] private float _movementSpeed = 5f;
     [SerializeField] private float _rotationSpeed = 5f;
     [SerializeField] private float _minimumCameraPitch = -80f, _maximumCameraPitch = 80f;
 
+    [Header("Public")]
+    public bool movementEnabled = true;
+
     private float p_currentCameraPitch = 0f;
+    private Rigidbody p_rigidbody;
 
     void Start()
     {
         p_currentCameraPitch = _cameraPitch.localEulerAngles.x;
+        p_rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
+    {
+        p_rigidbody.angularVelocity = Vector3.zero;
+        if (movementEnabled)
+        {
+            Move();
+        }
+    }
+
+    private void Move()
     {
         Vector2 movementVector = _moveAction.action.ReadValue<Vector2>();
 

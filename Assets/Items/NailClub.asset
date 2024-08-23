@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0c6f3824ee96824ea20f30bc99a52e7, type: 3}
+  m_Name: NailClub
+  m_EditorClassIdentifier: 
+  _item:
+    _itemName: Nail Club
+    _icon: {fileID: 21300000, guid: 240d13fe08929e84b91e538bee78d022, type: 3}
+    _id: 6
+  prefab: {fileID: 1415745889045394969, guid: 75039ce2eda4b91478bca4fa13aa17b8, type: 3}
