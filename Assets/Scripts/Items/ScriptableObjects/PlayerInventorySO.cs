@@ -9,7 +9,7 @@ public class PlayerInventorySO : ScriptableObject
     public UnityEvent<IItem, int> OnItemAdded;
     public UnityEvent<IItem, int> OnItemRemoved;
 
-    private List<IItem> items = new List<IItem>();
+    private Dictionary<int, IItem> items = new Dictionary<int, IItem>();
     private Dictionary<int, int> itemCount = new Dictionary<int, int>();
 
     public int GetItemCount(int itemID)
@@ -26,19 +26,28 @@ public class PlayerInventorySO : ScriptableObject
         return GetItemCount(item.ItemID);
     }
 
+    public IItem GetItem(int itemID)
+    {
+        if (items.ContainsKey(itemID))
+        {
+            return items[itemID];
+        }
+        return null;
+    }
+
     public void AddItem(IItem item, int count = 1)
     {
-        if (itemCount.ContainsKey(item.ItemID))
+        if (items.ContainsKey(item.ItemID))
         {
             itemCount[item.ItemID] += count;
         }
         else
         {
-            items.Add(item);
+            items.Add(item.ItemID, item);
             itemCount.Add(item.ItemID, count);
         }
 
-        OnItemAdded?.Invoke(item, count);
+        OnItemAdded?.Invoke(item, itemCount[item.ItemID]);
     }
 
     public void AddItem(ItemDefinitionSO itemDefinition, int count = 1)
@@ -51,12 +60,12 @@ public class PlayerInventorySO : ScriptableObject
         if(itemCount.TryGetValue(item.ItemID, out int currentCount) && currentCount >= count)
         {
             itemCount[item.ItemID] -= count;
-            if (itemCount[item.ItemID] == 0)
+            OnItemRemoved?.Invoke(item, itemCount[item.ItemID]);
+            if (itemCount[item.ItemID] <= 0)
             {
-                items.Remove(item);
+                items.Remove(item.ItemID);
                 itemCount.Remove(item.ItemID);
             }
-            OnItemRemoved?.Invoke(item, count);
             return true;
         }
         return false;
