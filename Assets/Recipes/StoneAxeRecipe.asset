@@ -13,14 +13,10 @@ MonoBehaviour:
   m_Name: StoneAxeRecipe
   m_EditorClassIdentifier: 
   ingredients:
-  - itemId: 4
-    itemName: Plank
+  - item: {fileID: 11400000, guid: b98bd0fae6d783d42a169fdd45235921, type: 2}
     amount: 1
-    _setToThisItem: {fileID: 0}
-  - itemId: 1
-    itemName: Stone
+  - item: {fileID: 11400000, guid: b775f7635da633b43a1ca44c33f118bd, type: 2}
     amount: 1
-    _setToThisItem: {fileID: 0}
   result: {fileID: 11400000, guid: cdb0b77e7b344c1409fd3cbaac54b0d9, type: 2}
   resultAmount: 1
   chanceToCraft: 0.9

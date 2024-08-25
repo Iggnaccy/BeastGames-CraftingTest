@@ -6,14 +6,16 @@ using UnityEngine.InputSystem;
 public class PlayerControl : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private InputActionReference _moveAction, _rotateAction;
+    [SerializeField] private InputActionReference _moveAction;
+    [SerializeField] private InputActionReference _rotateAction;
+    [SerializeField] private InputActionReference _inventoryToggleAction;
     [SerializeField] private Transform _cameraPitch;
 
     [Header("Settings")]
     [SerializeField] private bool _allowSideMovement = true;
     [SerializeField] private float _movementSpeed = 5f;
-    [SerializeField] private float _rotationSpeed = 5f;
-    [SerializeField] private float _minimumCameraPitch = -80f, _maximumCameraPitch = 80f;
+    [SerializeField] private float _rotationSpeed = 25f;
+    [SerializeField] private float _minimumCameraPitch = 20f, _maximumCameraPitch = 50f;
 
     [Header("Public")]
     public bool movementEnabled = true;
@@ -21,10 +23,16 @@ public class PlayerControl : MonoBehaviour
     private float p_currentCameraPitch = 0f;
     private Rigidbody p_rigidbody;
 
-    void Start()
+    private void Start()
     {
         p_currentCameraPitch = _cameraPitch.localEulerAngles.x;
         p_rigidbody = GetComponent<Rigidbody>();
+        _inventoryToggleAction.action.performed += _ => movementEnabled = !movementEnabled;
+    }
+
+    private void OnDestroy()
+    {
+        _inventoryToggleAction.action.performed -= _ => movementEnabled = !movementEnabled;
     }
 
     private void Update()

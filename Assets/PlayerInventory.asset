@@ -9,18 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccada58193d66cd4eace875891ac9c31, type: 3}
-  m_Name: NailRecipe
+  m_Script: {fileID: 11500000, guid: 7ca5d41706472e548af2672c11aae008, type: 3}
+  m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  ingredients:
-  - item: {fileID: 11400000, guid: 221f225dea30e674da7d121247275a43, type: 2}
-    amount: 2
-  result: {fileID: 11400000, guid: eeee1ee5eff92bf4cbda5494d946989e, type: 2}
-  resultAmount: 16
-  chanceToCraft: 0.6
-  OnCraftingSuccess:
+  OnItemAdded:
     m_PersistentCalls:
       m_Calls: []
-  OnCraftingFailed:
+  OnItemRemoved:
     m_PersistentCalls:
       m_Calls: []

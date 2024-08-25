@@ -9,9 +9,10 @@ public class MissingItemPickup : ItemPickup
     private static Dictionary<int, Material> p_materialsCache = new Dictionary<int, Material>();
     private static Shader p_unlitTextureShader;
 
-    public override void Setup(BasicItem item)
+    public override void Setup(ItemDefinitionSO itemDefinition)
     {
-        base.Setup(item);
+        base.Setup(itemDefinition);
+        var item = itemDefinition.Item;
 
         if(p_materialsCache.ContainsKey(item.ItemID))
         {

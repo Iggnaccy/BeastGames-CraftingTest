@@ -13,14 +13,10 @@ MonoBehaviour:
   m_Name: NailClubRecipe
   m_EditorClassIdentifier: 
   ingredients:
-  - itemId: 4
-    itemName: Plank
+  - item: {fileID: 11400000, guid: b98bd0fae6d783d42a169fdd45235921, type: 2}
     amount: 1
-    _setToThisItem: {fileID: 0}
-  - itemId: 3
-    itemName: Nail
+  - item: {fileID: 11400000, guid: eeee1ee5eff92bf4cbda5494d946989e, type: 2}
     amount: 16
-    _setToThisItem: {fileID: 0}
   result: {fileID: 11400000, guid: 0427091700d0ada41b52f86cf787dfdf, type: 2}
   resultAmount: 1
   chanceToCraft: 0.2

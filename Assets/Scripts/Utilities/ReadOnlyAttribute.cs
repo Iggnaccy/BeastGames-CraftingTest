@@ -2,6 +2,6 @@ using UnityEngine;
 
 /// <summary>
 /// Read Only attribute.
-/// Attribute is use only to mark ReadOnly properties.
+/// Attribute is used only to mark Inspector-ReadOnly properties.
 /// </summary>
 public class ReadOnlyAttribute : PropertyAttribute { }

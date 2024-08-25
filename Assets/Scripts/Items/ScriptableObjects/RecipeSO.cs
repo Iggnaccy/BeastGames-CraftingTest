@@ -12,35 +12,28 @@ public class RecipeSO : ScriptableObject
     [Range(0f, 1f)]
     public float chanceToCraft = 1f;
 
+    public bool Craft()
+    {
+        var roll = Random.Range(0f, 1f);
+        if(roll <= chanceToCraft)
+        {
+            OnCraftingSuccess.Invoke();
+            return true;
+        }
+        else
+        {
+            OnCraftingFailed.Invoke();
+            return false;
+        }
+    }
+
     public UnityEvent OnCraftingSuccess;
     public UnityEvent OnCraftingFailed;
-
-    private void OnValidate()
-    {
-        foreach (var ingredient in ingredients)
-        {
-            ingredient.OnValidate();
-        }
-    
-    }
 }
 
 [System.Serializable]
 public class RecipeElement
 {
-    [ReadOnly] public int itemId;
-    [ReadOnly] public string itemName;
+    public ItemDefinitionSO item;
     public int amount = 1;
-
-    [SerializeField] private ItemDefinitionSO _setToThisItem; // This is a tool for the editor to set the item ID based on the item definition, otherwise unused
-
-    public void OnValidate()
-    {
-        if (_setToThisItem != null)
-        {
-            itemId = _setToThisItem.Item.ItemID;
-            itemName = _setToThisItem.Item.ItemName;
-            _setToThisItem = null;
-        }
-    }
 }

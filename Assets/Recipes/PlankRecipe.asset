@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: PlankRecipe
   m_EditorClassIdentifier: 
   ingredients:
-  - itemId: 0
-    itemName: Wood
+  - item: {fileID: 11400000, guid: c59bc78ef3568954397c2ed2b9b76a10, type: 2}
     amount: 2
-    _setToThisItem: {fileID: 0}
   result: {fileID: 11400000, guid: b98bd0fae6d783d42a169fdd45235921, type: 2}
   resultAmount: 2
   chanceToCraft: 1
