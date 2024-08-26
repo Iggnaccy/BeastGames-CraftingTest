@@ -9,9 +9,15 @@ public class ItemDefinitionSO : ItemDefinitionAbstract
     public override BasicItem Item => _item;
 }
 
-public abstract class ItemDefinitionAbstract : ScriptableObject
+public abstract class ItemDefinitionAbstract : ScriptableObject, IItem
 {
     public GameObject prefab;
     public abstract BasicItem Item { get; }
+
+    public string ItemName => ((IItem)Item).ItemName;
+
+    public int ItemID => ((IItem)Item).ItemID;
+
+    public Sprite Icon => ((IItem)Item).Icon;
 }
 

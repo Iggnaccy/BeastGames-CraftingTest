@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "Recipe list", menuName = "SO/Items/RecipeListSO")]
 public class RecipeListSO : ScriptableObject, IEnumerable<RecipeSO>
 {
     [SerializeField] private List<RecipeSO> _recipes;

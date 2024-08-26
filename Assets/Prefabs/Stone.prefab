@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 9008662000534605074}
   - component: {fileID: 1235265302367763221}
   - component: {fileID: 4232736333058342236}
-  - component: {fileID: 7105811505381343487}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RockModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,29 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7105811505381343487
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6897471004895551449}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6916730894804445785
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3399836548523620241}
   - component: {fileID: 64050242178721478}
-  m_Layer: 0
+  - component: {fileID: 48006612047593190}
+  m_Layer: 6
   m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,5 +131,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInventory: {fileID: 11400000, guid: ddbd9a4b175978f41af0aeb6234a217b, type: 2}
   _itemDefinitionList: {fileID: 11400000, guid: 189817994b109844ab0a9b76855be1ec, type: 2}
+  _model: {fileID: 6897471004895551449}
   _item: {fileID: 11400000, guid: b775f7635da633b43a1ca44c33f118bd, type: 2}
   _isVolatileResource: 0
+--- !u!136 &48006612047593190
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6916730894804445785}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

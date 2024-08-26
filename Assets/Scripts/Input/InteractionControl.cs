@@ -21,23 +21,25 @@ public class InteractionControl : MonoBehaviour
 
     private float p_lastCheckTime = 0f;
     private IInteractable p_currentInteractable = null;
+    private bool p_enabled = true;
 
     private void Start()
     {
         _interactionAction.action.performed += Interact;
-        _toggleEnabledAction.action.performed += context => enabled = !enabled;
+        _toggleEnabledAction.action.performed += context => p_enabled = !p_enabled;
     }
 
     private void OnDestroy()
     {
         _interactionAction.action.performed -= Interact;
-        _toggleEnabledAction.action.performed -= context => enabled = !enabled;
+        _toggleEnabledAction.action.performed -= context => p_enabled = !p_enabled;
     }
 
     private void Update()
     {
-        if(Time.time - p_lastCheckTime > _interactionCheckRate && enabled)
+        if(Time.time - p_lastCheckTime > _interactionCheckRate && p_enabled)
         {
+            Debug.Log("Checking interactables");
             p_lastCheckTime = Time.time;
             CheckForInteractable();
         }
@@ -45,14 +47,27 @@ public class InteractionControl : MonoBehaviour
 
     private void CheckForInteractable()
     {
-        if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, _interactionDistance, 1 << _interactionLayer))
+        var ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        if(Physics.Raycast(ray, out RaycastHit hit, _interactionDistance, 1 << _interactionLayer))
         {
             if(hit.collider.gameObject.TryGetComponent(out IInteractable interactable))
             {
-                p_currentInteractable?.OnEndHover();
-                p_currentInteractable = interactable;
-                OnInteractableChanged?.Invoke(p_currentInteractable);
-                p_currentInteractable.OnStartHover();
+                if (interactable != p_currentInteractable)
+                {
+                    p_currentInteractable?.OnEndHover();
+                    p_currentInteractable = interactable;
+                    OnInteractableChanged?.Invoke(p_currentInteractable);
+                    p_currentInteractable.OnStartHover();
+                }
+            }
+            else
+            {
+                if (p_currentInteractable != null)
+                {
+                    p_currentInteractable.OnEndHover();
+                    p_currentInteractable = null;
+                    OnInteractableChanged?.Invoke(null);
+                }
             }
         }
         else

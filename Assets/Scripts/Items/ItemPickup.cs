@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
     [Header("References")]
     [SerializeField] private PlayerInventorySO _playerInventory;
     [SerializeField] private ItemDefinitionListSO _itemDefinitionList;
+    [SerializeField] private GameObject _model;
     [Header("Settings")]
     [SerializeField] private ItemDefinitionSO _item;
     [SerializeField] private bool _isVolatileResource = false;
@@ -59,6 +61,12 @@ public class ItemPickup : MonoBehaviour, IInteractable
         if (_isVolatileResource)
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            // jump tween
+            var tween = _model.transform.DOLocalMoveY(0.25f, 0.15f);
+            tween.onComplete = () => { _model.transform.DOLocalMoveY(0, 0.1f); };
         }
     }
 }

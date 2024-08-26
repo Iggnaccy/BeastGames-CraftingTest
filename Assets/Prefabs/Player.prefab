@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactionAction: {fileID: 4539485136844930952, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
   _toggleEnabledAction: {fileID: 4879344532809141577, guid: 66b890bcdf0decf48a83ce98fc62816e, type: 3}
-  _interactionLayer: 8
+  _interactionLayer: 6
   _interactionDistance: 2
   _interactionCheckRate: 0.1
   OnInteractableChanged:

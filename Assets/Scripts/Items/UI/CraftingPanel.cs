@@ -12,15 +12,23 @@ public class CraftingPanel : MonoBehaviour
     [SerializeField] private RecipeUI _recipeUIPrefab;
     [Header("UI References")]
     [SerializeField] private Transform _recipesParent;
-    [SerializeField] private Button _craftButton;
     [SerializeField] private Toggle _craftableOnlyToggle;
 
     private List<RecipeUI> _cache = new List<RecipeUI>();
 
     private void Start()
     {
-        _craftButton.onClick.AddListener(Craft);
         _craftableOnlyToggle.onValueChanged.AddListener(ToggleCraftable);
+        SetupRecipes();
+    }
+
+    private void SetupRecipes()
+    {
+        for(int i = 0; i < _recipes.Count; i++)
+        {
+            var recipeUI = GetElement(i);
+            recipeUI.Setup(_recipes[i]);
+        }
     }
 
     private void ToggleCraftable(bool onlyCraftable)
@@ -40,10 +48,5 @@ public class CraftingPanel : MonoBehaviour
             _cache.Add(element);
         }
         return _cache[index];
-    }
-
-    private void Craft()
-    {
-        
     }
 }

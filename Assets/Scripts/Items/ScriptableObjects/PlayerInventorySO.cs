@@ -50,11 +50,6 @@ public class PlayerInventorySO : ScriptableObject
         OnItemAdded?.Invoke(item, itemCount[item.ItemID]);
     }
 
-    public void AddItem(ItemDefinitionSO itemDefinition, int count = 1)
-    {
-        AddItem(itemDefinition.Item, count);
-    }
-
     public bool RemoveItem(IItem item, int count = 1)
     {
         if(itemCount.TryGetValue(item.ItemID, out int currentCount) && currentCount >= count)

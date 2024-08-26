@@ -9,15 +9,11 @@ public class RecipeUI : MonoBehaviour
     [SerializeField] private RecipeElementUI _ingredientPrefab;
     [SerializeField] private Transform _ingredientParent;
     [SerializeField] private RecipeElementUI _result;
+    [SerializeField] private Button _button;
 
     private List<RecipeElementUI> _cache = new List<RecipeElementUI>();
-    private bool p_isDirty = false;
+    private bool p_isDirty = false, p_isCraftable = false;
     private RecipeSO p_recipe;
-
-    private void Start()
-    {
-        _playerInventory.OnItemAdded.AddListener(UpdateIngredients);
-    }
 
     private void OnDestroy()
     {
@@ -39,6 +35,8 @@ public class RecipeUI : MonoBehaviour
             _cache[i].gameObject.SetActive(false);
         }
         p_recipe = recipe;
+        _playerInventory.OnItemAdded.AddListener(UpdateIngredients);
+        _button.onClick.AddListener(Craft);
     }
 
     public void UpdateIngredients(IItem _, int __) // we don't care about the item or the amount, we just want to mark the UI as dirty
@@ -50,15 +48,20 @@ public class RecipeUI : MonoBehaviour
     {
         if(p_isDirty)
         {
-            for(int i = 0; i < _cache.Count; i++)
-            {
-                if(_cache[i].gameObject.activeSelf)
-                {
-                    var ingredient = _cache[i].Item;
-                    var recipeRequirerment = p_recipe.ingredients.Find(x => x.item == ingredient).amount;
-                }
-            }
+            UpdateIngredientsUI();
+            UpdateCraftable();
             p_isDirty = false;
+        }
+    }
+
+    private void UpdateIngredientsUI()
+    {
+        for (int i = 0; i < _cache.Count; i++)
+        {
+            var ingredient = _cache[i].Item;
+            var recipeRequirerment = p_recipe.ingredients.Find(x => x.item == ingredient).amount;
+            var ownedCount = _playerInventory.GetItemCount(_cache[i].Item.ItemID);
+            _cache[i].UpdateColor(recipeRequirerment, ownedCount);
         }
     }
 
@@ -85,5 +88,38 @@ public class RecipeUI : MonoBehaviour
             }
         }
         return true;
+    }
+
+    private void UpdateCraftable()
+    {
+        p_isCraftable = IsCraftable();
+    }
+
+    private void Craft()
+    {
+        Debug.Log("Boop!");
+        if(p_isDirty)
+        {
+            UpdateCraftable();
+        }
+        if(p_isCraftable)
+        {
+            for(int i = 0; i < p_recipe.ingredients.Count; i++)
+            {
+                _playerInventory.RemoveItem(p_recipe.ingredients[i].item, p_recipe.ingredients[i].amount);
+            }
+
+            bool success = p_recipe.Craft();
+            if (success)
+            {
+                _playerInventory.AddItem(p_recipe.result, p_recipe.resultAmount);
+            }
+            else
+            {
+                // probably nothing, as other interactions with recipes should be done on events
+                Debug.Log($"Attempt to craft {p_recipe.result.Item.ItemName} failed");
+            }
+            p_isDirty = true;
+        }
     }
 }
