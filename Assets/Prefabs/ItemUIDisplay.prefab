@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _icon: {fileID: 1529405826560781464}
-  _button: {fileID: 8801915915897853601}
   _itemCount: {fileID: 7516235069714068640}
+  button: {fileID: 8801915915897853601}
 --- !u!1 &695896311147059784
 GameObject:
   m_ObjectHideFlags: 0

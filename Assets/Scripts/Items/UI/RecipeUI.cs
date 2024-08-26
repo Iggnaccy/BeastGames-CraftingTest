@@ -9,7 +9,7 @@ public class RecipeUI : MonoBehaviour
     [SerializeField] private RecipeElementUI _ingredientPrefab;
     [SerializeField] private Transform _ingredientParent;
     [SerializeField] private RecipeElementUI _result;
-    [SerializeField] private Button _button;
+    //[SerializeField] private Button _button;
 
     private List<RecipeElementUI> _cache = new List<RecipeElementUI>();
     private bool p_isDirty = false, p_isCraftable = false;
@@ -22,7 +22,9 @@ public class RecipeUI : MonoBehaviour
 
     public void Setup(RecipeSO recipe)
     {
-        for(int i = 0; i < recipe.ingredients.Count; i++)
+        p_recipe = recipe;
+        _playerInventory.OnItemAdded.AddListener(UpdateIngredients);
+        for (int i = 0; i < recipe.ingredients.Count; i++)
         {
             RecipeElementUI element = GetElement(i);
             var ingredient = recipe.ingredients[i];
@@ -30,13 +32,10 @@ public class RecipeUI : MonoBehaviour
         }
         _result.Setup(recipe.result, recipe.resultAmount);
 
-        for(int i = recipe.ingredients.Count; i < _cache.Count; i++)
-        {
-            _cache[i].gameObject.SetActive(false);
-        }
-        p_recipe = recipe;
-        _playerInventory.OnItemAdded.AddListener(UpdateIngredients);
-        _button.onClick.AddListener(Craft);
+        //for(int i = recipe.ingredients.Count; i < _cache.Count; i++)
+        //{
+        //    _cache[i].gameObject.SetActive(false);
+        //}
     }
 
     public void UpdateIngredients(IItem _, int __) // we don't care about the item or the amount, we just want to mark the UI as dirty
@@ -95,7 +94,7 @@ public class RecipeUI : MonoBehaviour
         p_isCraftable = IsCraftable();
     }
 
-    private void Craft()
+    public void Craft()
     {
         Debug.Log("Boop!");
         if(p_isDirty)

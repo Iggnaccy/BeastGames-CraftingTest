@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 6183147588713213983}
   - component: {fileID: 568128528465929884}
   - component: {fileID: 4986831727104421885}
+  - component: {fileID: 2189614085240163421}
   m_Layer: 6
   m_Name: Iron
   m_TagString: Untagged
@@ -164,6 +165,7 @@ MonoBehaviour:
   _playerInventory: {fileID: 11400000, guid: ddbd9a4b175978f41af0aeb6234a217b, type: 2}
   _itemDefinitionList: {fileID: 11400000, guid: 189817994b109844ab0a9b76855be1ec, type: 2}
   _model: {fileID: 1633978511270188626}
+  _rigidbody: {fileID: 2189614085240163421}
   _item: {fileID: 11400000, guid: 221f225dea30e674da7d121247275a43, type: 2}
   _isVolatileResource: 0
 --- !u!136 &4986831727104421885
@@ -189,3 +191,30 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!54 &2189614085240163421
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7186754655816407706}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

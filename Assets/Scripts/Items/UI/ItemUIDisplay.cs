@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ItemUIDisplay : MonoBehaviour
 {
     [SerializeField] private Image _icon;
-    [SerializeField] private Button _button;
     [SerializeField] private TextMeshProUGUI _itemCount;
+    public Button button;
 
     private IItem p_item;
 

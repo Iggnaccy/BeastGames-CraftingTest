@@ -10,6 +10,7 @@ public class InventoryPanel : MonoBehaviour
     [SerializeField] private PlayerInventorySO _playerInventory;
     [SerializeField] private ItemUIDisplay _itemPrefab;
     [SerializeField] private Transform _itemParent;
+    [SerializeField] private InventoryInteraction _inventoryInteraction;
 
     private Dictionary<int, ItemUIDisplay> p_itemDisplays = new Dictionary<int, ItemUIDisplay>();
 
@@ -35,6 +36,7 @@ public class InventoryPanel : MonoBehaviour
         }
         ItemUIDisplay itemDisplay = Instantiate(_itemPrefab, _itemParent);
         itemDisplay.Setup(item, count);
+        itemDisplay.button.onClick.AddListener(() => { _inventoryInteraction.Show(item as ItemDefinitionSO, itemDisplay.transform as RectTransform); }); // misuse of interface; I think I should just abandon this approach
         p_itemDisplays.Add(item.ItemID, itemDisplay);
     }
 

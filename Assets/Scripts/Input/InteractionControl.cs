@@ -27,6 +27,7 @@ public class InteractionControl : MonoBehaviour
     {
         _interactionAction.action.performed += Interact;
         _toggleEnabledAction.action.performed += context => p_enabled = !p_enabled;
+        OnInteractableChanged?.Invoke(null);
     }
 
     private void OnDestroy()
@@ -39,7 +40,6 @@ public class InteractionControl : MonoBehaviour
     {
         if(Time.time - p_lastCheckTime > _interactionCheckRate && p_enabled)
         {
-            Debug.Log("Checking interactables");
             p_lastCheckTime = Time.time;
             CheckForInteractable();
         }
@@ -85,5 +85,6 @@ public class InteractionControl : MonoBehaviour
     {
         p_currentInteractable?.OnInteract();
         p_currentInteractable = null; // Clear current interactable after interaction to prevent double interactions with objects that disappear on interaction
+        OnInteractableChanged?.Invoke(null);
     }
 }

@@ -9,6 +9,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
     [SerializeField] private PlayerInventorySO _playerInventory;
     [SerializeField] private ItemDefinitionListSO _itemDefinitionList;
     [SerializeField] private GameObject _model;
+    [SerializeField] private Rigidbody _rigidbody;
     [Header("Settings")]
     [SerializeField] private ItemDefinitionSO _item;
     [SerializeField] private bool _isVolatileResource = false;
@@ -68,5 +69,28 @@ public class ItemPickup : MonoBehaviour, IInteractable
             var tween = _model.transform.DOLocalMoveY(0.25f, 0.15f);
             tween.onComplete = () => { _model.transform.DOLocalMoveY(0, 0.1f); };
         }
+    }
+
+    public void SetVolatile(bool isVolatile)
+    {
+        _isVolatileResource = isVolatile;
+    }
+
+    public void SetIsKinematic(bool isKinematic, float delay = 0)
+    {
+        if (delay > 0)
+        {
+            StartCoroutine(SetIsKinematicAfterDelay(isKinematic, delay));
+        }
+        else
+        {
+            _rigidbody.isKinematic = isKinematic;
+        }
+    }
+
+    private IEnumerator SetIsKinematicAfterDelay(bool isKinematic, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _rigidbody.isKinematic = isKinematic;
     }
 }

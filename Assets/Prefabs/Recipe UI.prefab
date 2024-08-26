@@ -54,7 +54,6 @@ MonoBehaviour:
   _ingredientPrefab: {fileID: 8961644875098650504, guid: 2d8408674ece25a4aa4ee58c4f69f92f, type: 3}
   _ingredientParent: {fileID: 2826362475478668124}
   _result: {fileID: 1306537213840739893}
-  _button: {fileID: 2128327858818836802}
 --- !u!1 &2288173165382404363
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +251,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: -15, y: -15, z: -15, w: -15}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -326,7 +325,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3536676854483513503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5895183897636795584}
+        m_TargetAssemblyTypeName: RecipeUI, Assembly-CSharp
+        m_MethodName: Craft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4681586730484566304
 GameObject:
   m_ObjectHideFlags: 0
